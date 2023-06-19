@@ -10,9 +10,12 @@ export const SocialMidiaCard = () => {
       <div className="content_wrapp">
         {social_midias.map((social_midia) => {
           return (
-            <a key={social_midia.id} href="#">
+            <a key={social_midia.id} href={social_midia.url}>
               <div className="social_midia_wrapper">
-                <img className="icons_social_midia" src={social_midia.url} />
+                <img
+                  className="icons_social_midia"
+                  src={social_midia.url_img}
+                />
                 <label className="name_social_midia">{social_midia.name}</label>
               </div>
             </a>

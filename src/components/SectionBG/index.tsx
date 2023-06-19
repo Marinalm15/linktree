@@ -7,7 +7,7 @@ export const SectionBG = () => {
         {links.map((links) => {
           return (
             <div className="links_content">
-              <a key={links.id} href="#">
+              <a key={links.id} href={links.url}>
                 <p className="section_container_text">{links.name}</p>
               </a>
             </div>
