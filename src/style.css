@@ -50,8 +50,8 @@
 }
 
 .section_BG {
-  background-image: url("images/Fundo_branco_com_os_predios.png");
-  background-size: 800px 400px;
+  background-image: url("images/fundo.png");
+  background-size: 755px 400px;
   width: 800px;
   height: 400px;
   margin-left: 2rem;
@@ -153,7 +153,7 @@ footer .row-blue {
   background-color: #124e6a;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   .social_midia_wrapper {
     display: flex;
     flex-direction: column;
@@ -175,8 +175,9 @@ footer .row-blue {
   }
 
   .section_BG {
-    background-image: url("images/Fundo_branco_com_os_predios1.jpg");
+    /*background-image: url("images/Fundo_branco_com_os_predios1.png");*/
     background-size: 550px 350px;
+    background-size: 650px 400px;
     width: 500px;
     height: 400px;
     background-position: bottom;
@@ -219,7 +220,7 @@ footer .row-blue {
   }
 
   .section_BG {
-    background-size: 550px 200px;
+    background-size: 600px 300px;
     width: 500px;
     height: 300px;
   }
@@ -269,9 +270,9 @@ footer .row-blue {
 
 @media only screen and (min-width: 768px) and (max-width: 850px) {
   .section_BG {
-    background-size: 1000px 650px;
+    background-size: 1000px 600px;
     width: 1000px;
-    height: 700px;
+    height: 750px;
   }
 
   #cabecalho {
@@ -284,11 +285,15 @@ footer .row-blue {
 
   .boxmodel {
     width: 95%;
-    height: 250px;
+    height: 300px;
   }
 
   .icons_social_midia {
     width: 60px;
     margin: 30px 30px 0px 30px;
+  }
+
+  .content_wrapper {
+    gap: 0rem;
   }
 }
