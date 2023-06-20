@@ -1,0 +1,11 @@
+.signin_content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 7rem;
+}
+
+.cl-internal-vqjo9j {
+  justify-content: center;
+}
