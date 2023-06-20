@@ -1,17 +1,15 @@
-import "./style.css";
-import "./helpers/SocialMidia.ts";
-import { Header } from "./components/Header/index.tsx";
-import { SocialMidiaCard } from "./components/SocialMidiaCard/index.tsx";
-import { SectionBG } from "./components/SectionBG/index.tsx";
-import { Footer } from "./components/Footer/index.tsx";
+import { BrowserRouter } from "react-router-dom";
+import { Router } from "./Router.tsx";
+import { ClerkProvider, UserButton } from "@clerk/clerk-react";
+
+const publishableKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
 export function App() {
   return (
-    <div id="container">
-      <Header />
-      <SocialMidiaCard />
-      <SectionBG />
-      <Footer />
-    </div>
+    <ClerkProvider publishableKey={publishableKey}>
+      <BrowserRouter>
+        <Router />;
+      </BrowserRouter>
+    </ClerkProvider>
   );
 }
