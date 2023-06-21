@@ -8,7 +8,7 @@ export function App() {
   return (
     <ClerkProvider publishableKey={publishableKey}>
       <BrowserRouter>
-        <Router />;
+        <Router />
       </BrowserRouter>
     </ClerkProvider>
   );
