@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { Linktree } from "./pages/Linktree";
-import { SignIn, SignUp, SignedIn, SignedOut } from "@clerk/clerk-react";
+import { SignUp, SignedIn, SignedOut } from "@clerk/clerk-react";
 import { Article } from "./pages/Article";
 import { Login } from "./pages/Session/Login";
 
