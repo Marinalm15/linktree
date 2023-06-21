@@ -1,0 +1,90 @@
+.fundo_total {
+  margin: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#form_container {
+  width: 20rem;
+  height: 20rem;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background-color: #cbdf24;
+  color: #124e6a;
+  font-weight: bold;
+  margin-top: 15rem;
+  font-size: 10px;
+}
+
+.form_button {
+  background: #124e6a;
+  cursor: pointer;
+  transition: background 0.3s;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 15px;
+  color: #fff;
+}
+
+.inserir {
+  font-size: 20px;
+}
+
+.header_blue {
+  width: 100%;
+  background-color: #124e6a;
+  height: 75px;
+}
+
+.header_blue_wrapper {
+  width: 100%;
+  max-width: 1380px;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.wrapper_userButton {
+  display: flex;
+  align-items: center;
+}
+
+.user_name {
+  color: #fff;
+  margin: 0.5rem;
+}
+
+.header_green {
+  background-color: #cbdf24;
+  height: 10px;
+  width: 100%;
+}
+
+.logo_icon {
+  width: 100px;
+}
+
+.footer_blue {
+  width: 100%;
+  height: 30px;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  background-color: #124e6a;
+}
+
+.footer_green {
+  width: 100%;
+  height: 40px;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  background-color: #cbdf24;
+}

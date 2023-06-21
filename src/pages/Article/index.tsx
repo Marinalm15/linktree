@@ -1,6 +1,12 @@
-import { UserButton } from "@clerk/clerk-react";
 import "./style.css";
+import { Form } from "../Form";
 
 export const Article = () => {
-  return <div>{<UserButton />}</div>;
+  return (
+    <div>
+      <div>
+        <Form />
+      </div>
+    </div>
+  );
 };
