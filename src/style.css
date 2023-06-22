@@ -1,0 +1,21 @@
+.button_login {
+  background-color: rgb(18, 78, 106);
+}
+
+.button_login:hover {
+  background-color: rgb(35, 116, 153);
+  transition: background 0.3s;
+}
+
+.logo_img {
+  width: "200px";
+  margin: 0;
+  padding: 0;
+}
+
+.logo_box {
+  display: "flex";
+  align-items: "center";
+  justify-content: "center";
+  height: "100px";
+}
