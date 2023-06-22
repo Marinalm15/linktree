@@ -1,11 +1,20 @@
 import { UserButton, useSession } from "@clerk/clerk-react";
 import "./style.css";
+import { useState, useEffect } from "react";
 
 export const Form = () => {
+  function novoArtigo(e) {
+    e.preventeDefault();
+    console.log("titulo");
+  }
+
   const { session } = useSession();
 
   const firstName = [session?.publicUserData.firstName];
   const lastName = [session?.publicUserData.lastName];
+
+  const [titulo, setTitulo] = useState();
+  const [url, setUrl] = useState();
 
   return (
     <div className="fundo_total">
@@ -29,16 +38,20 @@ export const Form = () => {
 
       <div className="header_green"></div>
 
-      <form method="POST" id="form_container">
+      <form onSubmit={novoArtigo} method="POST" id="form_container">
         <h3 className="inserir">Inserir artigo</h3>
         <div>
           <label>Título</label>
           <div>
             <input
+              className="placeholder"
               type="text"
-              className="título"
+              id="titulo"
+              name="titulo"
               placeholder="Inserir Título"
               required
+              onChange={(e) => setTitulo(e.target.value)}
+              value={titulo}
             ></input>
           </div>
         </div>
@@ -46,15 +59,23 @@ export const Form = () => {
           <label>Url</label>
           <div>
             <input
+              className="placeholder"
               type="url"
               id="url"
+              name="url"
               placeholder="Inserir url"
+              onChange={(e) => setUrl(e.target.value)}
               required
             ></input>
           </div>
         </div>
         <div>
-          <button className="form_button" type="submit">
+          <button
+            className="form_button"
+            id="submit"
+            type="submit"
+            name="enviar"
+          >
             Enviar
           </button>
         </div>
