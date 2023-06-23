@@ -2,6 +2,8 @@ import "./style.css";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { Input } from "../../components/Form/Input";
+import { Error } from "../../components/Form/ErrorMsg/ErrorMsg";
 
 interface FormArticleFields {
   titulo: string;
@@ -12,7 +14,7 @@ export const Form = () => {
   const schema = yup
     .object({
       titulo: yup.string().required("O campo é obrigatório"),
-      url: yup.string().required("URL inválida"),
+      url: yup.string().required(),
     })
     .required();
 
@@ -31,11 +33,12 @@ export const Form = () => {
         <div>
           <label>Título</label>
           <div>
-            <input
+            <Input
+              register={register}
               className="placeholder"
-              type="text"
+              name="titulo"
               placeholder="Inserir Título"
-              {...register("titulo")}
+              type="text"
             />
             <p>{errors.titulo?.message}</p>
           </div>
@@ -43,13 +46,14 @@ export const Form = () => {
         <div>
           <label>URL</label>
           <div>
-            <input
+            <Input
+              register={register}
               className="placeholder"
-              type="url"
-              placeholder="Inserir url"
-              {...register("url")}
+              name="url"
+              placeholder="Inserir URL"
+              type="text"
             />
-            <p>{errors.url?.message}</p>
+            <Error message="URL inválida" />
           </div>
         </div>
         <div>
