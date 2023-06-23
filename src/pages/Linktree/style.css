@@ -125,20 +125,7 @@ a {
   font-weight: 900;
 }
 
-#footer_verde {
-  position: absolute;
-  margin-top: -220px;
-  width: 500px;
-}
-
-#footer_azul {
-  position: absolute;
-  margin-top: -215px;
-  width: 1000px;
-}
-
 footer .row-green {
-  width: 1000px;
   height: 0.5rem;
   background-color: #cbdf24;
   left: 100px;
@@ -148,7 +135,6 @@ footer .row-blue {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 1000px;
   height: 3rem;
   background-color: #124e6a;
 }

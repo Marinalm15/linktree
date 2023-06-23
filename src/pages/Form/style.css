@@ -85,21 +85,3 @@
   width: 15rem;
   height: 2rem;
 }
-
-.footer_blue {
-  width: 100%;
-  height: 40px;
-  position: absolute;
-  bottom: 0;
-  text-align: center;
-  background-color: #124e6a;
-}
-
-.footer_green {
-  width: 100%;
-  height: 50px;
-  position: absolute;
-  bottom: 0;
-  text-align: center;
-  background-color: #cbdf24;
-}

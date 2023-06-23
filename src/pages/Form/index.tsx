@@ -18,26 +18,6 @@ export const Form = () => {
 
   return (
     <div className="fundo_total">
-      <div className="header_blue">
-        <div className="header_blue_wrapper">
-          <div>
-            <img
-              className="logo_icon"
-              src="images/Logo_Grupo_InMediam_fundo_alpha.png"
-            />
-          </div>
-
-          <div className="wrapper_userButton">
-            <UserButton />
-            <p className="user_name">
-              {firstName} {lastName}
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div className="header_green"></div>
-
       <form onSubmit={novoArtigo} method="POST" id="form_container">
         <h3 className="inserir">Inserir artigo</h3>
         <div>
@@ -79,10 +59,6 @@ export const Form = () => {
           </button>
         </div>
       </form>
-      <footer>
-        <div className="footer_green"></div>
-        <div className="footer_blue"></div>
-      </footer>
     </div>
   );
 };
