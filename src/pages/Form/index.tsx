@@ -1,24 +1,32 @@
-import { UserButton, useSession } from "@clerk/clerk-react";
 import "./style.css";
-import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
+interface FormArticleFields {
+  titulo: string;
+  url: string;
+}
 
 export const Form = () => {
-  const { session } = useSession();
+  const schema = yup
+    .object({
+      titulo: yup.string().required("O campo é obrigatório"),
+      url: yup.string().required("URL inválida"),
+    })
+    .required();
 
-  const firstName = [session?.publicUserData.firstName];
-  const lastName = [session?.publicUserData.lastName];
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormArticleFields>({ resolver: yupResolver(schema) });
 
-  const [titulo, setTitulo] = useState<String>("");
-  const [url, setUrl] = useState<String>("");
-
-  function novoArtigo(e: any) {
-    e.preventeDefault();
-    console.log(titulo);
-  }
+  const onSubmit = (data: any) => console.log(data);
 
   return (
     <div className="fundo_total">
-      <form onSubmit={novoArtigo} method="POST" id="form_container">
+      <form onSubmit={handleSubmit(onSubmit)} method="POST" id="form_container">
         <h3 className="inserir">Inserir artigo</h3>
         <div>
           <label>Título</label>
@@ -26,35 +34,26 @@ export const Form = () => {
             <input
               className="placeholder"
               type="text"
-              id="titulo"
-              name="titulo"
               placeholder="Inserir Título"
-              required
-              onChange={(e) => setTitulo(e.target.value)}
-            ></input>
+              {...register("titulo")}
+            />
+            <p>{errors.titulo?.message}</p>
           </div>
         </div>
         <div>
-          <label>Url</label>
+          <label>URL</label>
           <div>
             <input
               className="placeholder"
               type="url"
-              id="url"
-              name="url"
               placeholder="Inserir url"
-              onChange={(e) => setUrl(e.target.value)}
-              required
-            ></input>
+              {...register("url")}
+            />
+            <p>{errors.url?.message}</p>
           </div>
         </div>
         <div>
-          <button
-            className="form_button"
-            id="submit"
-            type="submit"
-            name="enviar"
-          >
+          <button className="form_button" type="submit" name="enviar">
             Enviar
           </button>
         </div>
