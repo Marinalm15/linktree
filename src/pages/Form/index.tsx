@@ -1,20 +1,20 @@
 import { UserButton, useSession } from "@clerk/clerk-react";
 import "./style.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export const Form = () => {
-  function novoArtigo(e) {
-    e.preventeDefault();
-    console.log("titulo");
-  }
-
   const { session } = useSession();
 
   const firstName = [session?.publicUserData.firstName];
   const lastName = [session?.publicUserData.lastName];
 
-  const [titulo, setTitulo] = useState();
-  const [url, setUrl] = useState();
+  const [titulo, setTitulo] = useState<String>("");
+  const [url, setUrl] = useState<String>("");
+
+  function novoArtigo(e: any) {
+    e.preventeDefault();
+    console.log(titulo);
+  }
 
   return (
     <div className="fundo_total">
@@ -51,7 +51,6 @@ export const Form = () => {
               placeholder="Inserir Título"
               required
               onChange={(e) => setTitulo(e.target.value)}
-              value={titulo}
             ></input>
           </div>
         </div>
@@ -79,10 +78,11 @@ export const Form = () => {
             Enviar
           </button>
         </div>
-        <footer />
+      </form>
+      <footer>
         <div className="footer_green"></div>
         <div className="footer_blue"></div>
-      </form>
+      </footer>
     </div>
   );
 };
