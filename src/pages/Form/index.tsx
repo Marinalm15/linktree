@@ -14,7 +14,7 @@ export const Form = () => {
   const schema = yup
     .object({
       titulo: yup.string().required("O campo é obrigatório"),
-      url: yup.string().required(),
+      url: yup.string().required("URL inválida"),
     })
     .required();
 
@@ -53,7 +53,7 @@ export const Form = () => {
               placeholder="Inserir URL"
               type="text"
             />
-            <Error message="URL inválida" />
+            <Error message={errors.url?.message} />
           </div>
         </div>
         <div>
