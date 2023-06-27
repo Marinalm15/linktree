@@ -1,0 +1,37 @@
+.header_blue {
+  width: 100%;
+  background-color: #124e6a;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header_blue_wrapper {
+  width: 100%;
+  max-width: 1380px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.wrapper_userButton {
+  display: flex;
+  align-items: center;
+}
+
+.user_name {
+  color: #fff;
+  margin: 0.5rem;
+}
+
+.header_green {
+  background-color: #cbdf24;
+  height: 10px;
+  width: 100%;
+}
+
+.logo_icon {
+  width: 100px;
+}
