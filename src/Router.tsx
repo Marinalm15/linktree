@@ -1,15 +1,14 @@
 import { Route, Routes } from "react-router-dom";
 import { Linktree } from "./pages/Linktree";
 import { SignUp, SignedIn, SignedOut } from "@clerk/clerk-react";
-import { Article } from "./pages/Article";
 import { Login } from "./pages/Session/Login";
+import { Articles } from "./pages/Articles";
+import { Article } from "./pages/Article";
 
 export function Router() {
   return (
     <Routes>
       <Route path="/" index element={<Linktree />} />
-
-      <Route path="/sign-in/*" element={<Login />} />
 
       <Route
         path="/sign-up/*"
@@ -17,7 +16,22 @@ export function Router() {
       />
 
       <Route
-        path="/article"
+        path="/artigos"
+        element={
+          <>
+            <SignedIn>
+              <Articles />
+            </SignedIn>
+
+            <SignedOut>
+              <Login />
+            </SignedOut>
+          </>
+        }
+      />
+
+      <Route
+        path="/artigo"
         element={
           <>
             <SignedIn>
@@ -27,6 +41,17 @@ export function Router() {
             <SignedOut>
               <Login />
             </SignedOut>
+          </>
+        }
+      />
+
+      <Route
+        path="/artigo/:id"
+        element={
+          <>
+            <SignedIn>
+              <Article />
+            </SignedIn>
           </>
         }
       />

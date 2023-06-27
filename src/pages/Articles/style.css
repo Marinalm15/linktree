@@ -1,0 +1,17 @@
+.session {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10rem;
+}
+
+.placeholder {
+  border-style: ridge;
+  border-color: #124e6a;
+  border-width: 1px;
+  border-radius: 5px;
+  font-style: italic;
+  width: 15rem;
+  height: 2rem;
+}
