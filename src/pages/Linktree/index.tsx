@@ -1,8 +1,7 @@
 import { UserButton, useSession } from "@clerk/clerk-react";
-import { Footer } from "../../components/Footer";
-import { Header } from "../../components/Header";
 import { SectionBG } from "../../components/SectionBG";
 import { SocialMidiaCard } from "../../components/SocialMidiaCard";
+import { HeaderLinktree } from "../../components/HeaderLinktree";
 import "./style.css";
 
 export const Linktree = () => {
@@ -16,10 +15,17 @@ export const Linktree = () => {
             <UserButton />
           </div>
         )}
-        <Header />
+
+        <HeaderLinktree />
         <SocialMidiaCard />
         <SectionBG />
-        <Footer />
+
+        <div className="footer-green"></div>
+        <div className="footer-blue">
+          <label id="texto">
+            Todos os direitos reservado Grupo InMediam.2022-2023
+          </label>
+        </div>
       </div>
     </>
   );
