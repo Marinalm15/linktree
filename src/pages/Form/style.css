@@ -7,18 +7,18 @@
 }
 
 #form_container {
-  width: 20rem;
-  height: 25rem;
+  width: 25rem;
+  height: 30rem;
   border-radius: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
+  gap: 3rem;
   background-color: #cbdf24;
   color: #124e6a;
   font-weight: bold;
-  margin-top: 10rem;
+  margin-top: 7rem;
   font-size: 15px;
 }
 
@@ -28,9 +28,10 @@
   transition: background 0.3s;
   border: none;
   border-radius: 5px;
-  padding: 10px 50px;
+  padding: 15px 60px;
   color: #fff;
   font-weight: bold;
+  font-size: 15px;
 }
 
 .form_button:hover {
@@ -39,49 +40,4 @@
 
 .inserir {
   font-size: 25px;
-}
-
-.header_blue {
-  width: 100%;
-  background-color: #124e6a;
-  height: 75px;
-}
-
-.header_blue_wrapper {
-  width: 100%;
-  max-width: 1380px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.wrapper_userButton {
-  display: flex;
-  align-items: center;
-}
-
-.user_name {
-  color: #fff;
-  margin: 0.5rem;
-}
-
-.header_green {
-  background-color: #cbdf24;
-  height: 10px;
-  width: 100%;
-}
-
-.logo_icon {
-  width: 100px;
-}
-
-.placeholder {
-  border-style: ridge;
-  border-color: #124e6a;
-  border-width: 1px;
-  border-radius: 5px;
-  font-style: italic;
-  width: 15rem;
-  height: 2rem;
 }
