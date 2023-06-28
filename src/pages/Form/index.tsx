@@ -4,13 +4,18 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { Input } from "../../components/Form/Input";
 import { Error } from "../../components/Form/ErrorMsg/ErrorMsg";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { Link, links } from "../../helpers/Links";
 
 interface FormArticleFields {
-  titulo: string;
-  url: string;
+  titulo: String;
+  url: String;
 }
 
 export const Form = () => {
+  const { id } = useParams();
+
   const schema = yup
     .object({
       titulo: yup.string().required("O campo é obrigatório"),
@@ -21,15 +26,39 @@ export const Form = () => {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm<FormArticleFields>({ resolver: yupResolver(schema) });
 
   const onSubmit = (data: any) => console.log(data);
 
+  useEffect(() => {
+    let ignore = false;
+
+    if (id) {
+      let filterLink = links.filter((link: Link) => {
+        if (link.id === +id) {
+          return link;
+        }
+      });
+
+      let linkToEdit = filterLink[0];
+
+      if (linkToEdit && !ignore) {
+        setValue("titulo", linkToEdit.name);
+        setValue("url", linkToEdit.url);
+      }
+    }
+
+    return () => {
+      ignore = true;
+    };
+  }, [id]);
+
   return (
     <div className="fundo_total">
       <form onSubmit={handleSubmit(onSubmit)} method="POST" id="form_container">
-        <h3 className="inserir">Inserir artigo</h3>
+        <h3 className="inserir">{id ? "Editar artigo" : "Inserir artigo"}</h3>
         <div>
           <label>Título</label>
           <div>
@@ -58,7 +87,7 @@ export const Form = () => {
         </div>
         <div>
           <button className="form_button" type="submit" name="enviar">
-            Enviar
+            {id ? "Salvar" : "Enviar"}
           </button>
         </div>
       </form>
