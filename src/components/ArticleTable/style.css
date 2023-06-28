@@ -32,12 +32,37 @@
 
 .pencil {
   border-style: none;
-  background-color: #fff;
+  background-color: transparent;
   cursor: pointer;
+}
+
+.pencil:hover {
+  color: #124e6a;
+}
+
+.pencil:hover {
+  color: #124e6a !important;
 }
 
 .trash {
   border-style: none;
-  background-color: #fff;
+  background-color: transparent;
   cursor: pointer;
+}
+
+.table-row-light {
+  background-color: #ffffff;
+}
+
+.table-row-dark {
+  background-color: #fbfbfb;
+}
+
+#article_table .ant-table-thead .ant-table-cell {
+  background-color: #124e6a;
+  color: #fff;
+}
+
+.ant-btn-primary {
+  background-color: #124e6a;
 }
