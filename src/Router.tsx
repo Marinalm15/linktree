@@ -8,15 +8,9 @@ import { Article } from "./pages/Article";
 export function Router() {
   return (
     <Routes>
-      <Route path="/" index element={<Linktree />} />
-
       <Route
-        path="/sign-up/*"
-        element={<SignUp routing="path" path="/sign-up" />}
-      />
-
-      <Route
-        path="/artigos"
+        path="/"
+        index
         element={
           <>
             <SignedIn>
@@ -54,6 +48,13 @@ export function Router() {
             </SignedIn>
           </>
         }
+      />
+
+      <Route path="/linktree" element={<Linktree />} />
+
+      <Route
+        path="/sign-up/*"
+        element={<SignUp routing="path" path="/sign-up" />}
       />
     </Routes>
   );
