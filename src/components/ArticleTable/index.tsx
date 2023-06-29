@@ -1,9 +1,9 @@
+import "./style.css";
 import { Table } from "antd";
 import { links } from "../../helpers/Links";
-import "./style.css";
 import { Trash, Pencil } from "@phosphor-icons/react";
-import React, { useState } from "react";
-import { Button, Modal } from "antd";
+import { useState } from "react";
+import { Modal } from "antd";
 
 export default function ArticleTable() {
   const { Column } = Table;
@@ -68,6 +68,7 @@ export default function ArticleTable() {
             title="Data"
             dataIndex="data"
             key="data"
+            sorter={(a: any, b: any): number => a.data.localeCompare(b.data)}
           />
           <Column
             responsive={["xs", "sm", "md"]}
@@ -92,9 +93,9 @@ export default function ArticleTable() {
               return (
                 <div className="actions">
                   <div>
-                    <Button className="trash" onClick={showModal}>
-                      <Trash size={20} />
-                    </Button>
+                    <button className="trash" onClick={showModal}>
+                      <Trash className="trash_icon" size={20} />
+                    </button>
                   </div>
                   <div>
                     <button

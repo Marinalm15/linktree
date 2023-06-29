@@ -50,6 +50,10 @@
   cursor: pointer;
 }
 
+.trash:hover {
+  color: #124e6a;
+}
+
 .table-row-light {
   background-color: #ffffff;
 }
@@ -64,5 +68,5 @@
 }
 
 .ant-btn-primary {
-  background-color: #124e6a;
+  background-color: rgb(163, 27, 27);
 }
