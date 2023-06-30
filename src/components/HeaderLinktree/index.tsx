@@ -1,4 +1,4 @@
-import { useSession } from "@clerk/clerk-react";
+import { UserButton, useSession } from "@clerk/clerk-react";
 
 export const HeaderLinktree = () => {
   const { isSignedIn } = useSession();
@@ -6,7 +6,12 @@ export const HeaderLinktree = () => {
   return (
     <header id="cabecalho" className="cabecalho_bg">
       <div className="img_wrapper">
-        {!isSignedIn && (
+        {isSignedIn && (
+          <div className="button">
+            <UserButton />
+          </div>
+        )}
+        {/* {!isSignedIn && (
           <button className="logIn_button" onClick={() => window.open("/")}>
             LogIn{" "}
           </button>
@@ -15,7 +20,7 @@ export const HeaderLinktree = () => {
           <button className="logIn_button" onClick={() => window.open("/")}>
             Artigos
           </button>
-        )}
+        )} */}
         <img id="logo" src="images/Logo_Grupo_InMediam_fundo_alpha.png" />
       </div>
     </header>
