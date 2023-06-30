@@ -6,7 +6,7 @@ export const Footer = () => {
       <div className="footer_green"></div>
       <div className="footer_blue">
         <p className="grupo_inmediam_footer_text">
-          Todos os direitos reservado Grupo InMediam.2022-2023
+          Todos os direitos reservado Grupo InMediam &copy; 2022-2023
         </p>
       </div>
     </div>
