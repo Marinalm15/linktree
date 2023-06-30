@@ -10,21 +10,18 @@ export const Linktree = () => {
   return (
     <>
       <div id="container">
-        {isSignedIn && (
-          <div className="button">
-            <UserButton />
-          </div>
-        )}
-
         <HeaderLinktree />
+
         <SocialMidiaCard />
         <SectionBG />
 
-        <div className="footer-green"></div>
-        <div className="footer-blue">
-          <label id="texto">
-            Todos os direitos reservado Grupo InMediam.2022-2023
-          </label>
+        <div className="footer_linktree">
+          <div className="footer-green"></div>
+          <div className="footer-blue">
+            <label id="texto">
+              Todos os direitos reservado Grupo InMediam.2022-2023
+            </label>
+          </div>
         </div>
       </div>
     </>
