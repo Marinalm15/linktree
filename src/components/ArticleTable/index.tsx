@@ -44,6 +44,12 @@ export default function ArticleTable() {
         >
           Novo Artigo
         </button>
+        <button
+          className="button_linktree"
+          onClick={() => window.open("linktree")}
+        >
+          LinkTree
+        </button>
         <Table
           id="article_table"
           className="table_article"
@@ -57,14 +63,14 @@ export default function ArticleTable() {
           bordered
           dataSource={dataSource}
           pagination={{
-            pageSize: 10,
+            pageSize: 6,
             position: ["bottomCenter"],
           }}
           scroll={{ y: 350, x: 800 }}
         >
           <Column
             responsive={["xs", "sm", "md"]}
-            width="10%"
+            width="12%"
             title="Data"
             dataIndex="data"
             key="data"

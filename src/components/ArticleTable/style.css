@@ -7,10 +7,26 @@
   padding: 10px 50px;
   color: #fff;
   font-weight: bold;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .button_new_article:hover {
+  background-color: rgb(35, 116, 153);
+}
+
+.button_linktree {
+  background: #124e6a;
+  cursor: pointer;
+  transition: background 0.3s;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 62px;
+  color: #fff;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.button_linktree:hover {
   background-color: rgb(35, 116, 153);
 }
 
@@ -69,4 +85,31 @@
 
 .ant-btn-primary {
   background-color: rgb(163, 27, 27);
+}
+
+@media only screen and (max-width: 375px) {
+  .table_container {
+    margin-top: 1rem;
+  }
+
+  .button_linktree {
+    margin-bottom: 1rem;
+  }
+
+  .button_new_article {
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media only screen and (min-width: 376px) and (max-width: 530px) {
+  .table_container {
+    margin-top: 2rem;
+  }
+}
+
+@media only screen and (min-width: 900px) and (max-width: 950px) {
+  .table_container {
+    width: 1100px;
+    margin-left: -6rem;
+  }
 }
