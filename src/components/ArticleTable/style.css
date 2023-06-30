@@ -46,14 +46,20 @@
   gap: 2rem;
 }
 
+.header_modal_delete {
+  display: flex;
+  align-items: center;
+
+  gap: 0.3rem;
+}
+
+.warning {
+  color: rgb(163, 27, 27);
+}
 .pencil {
   border-style: none;
   background-color: transparent;
   cursor: pointer;
-}
-
-.pencil:hover {
-  color: #124e6a;
 }
 
 .pencil:hover {
@@ -75,7 +81,7 @@
 }
 
 .table-row-dark {
-  background-color: #fbfbfb;
+  background-color: #124e6a11;
 }
 
 #article_table .ant-table-thead .ant-table-cell {

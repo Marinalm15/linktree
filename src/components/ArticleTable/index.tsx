@@ -1,7 +1,7 @@
 import "./style.css";
 import { Table } from "antd";
 import { links } from "../../helpers/Links";
-import { Trash, Pencil } from "@phosphor-icons/react";
+import { Trash, Pencil, Warning } from "@phosphor-icons/react";
 import { useState } from "react";
 import { Modal } from "antd";
 
@@ -119,11 +119,15 @@ export default function ArticleTable() {
       </div>
 
       <Modal
-        title="Tem certeza?"
+        title={
+          <div className="header_modal_delete">
+            <Warning size={30} className="warning" />
+            <p>Tem certeza?</p>
+          </div>
+        }
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
-        className="modalStyle"
       >
         <p>Deseja realmente apagar este artigo?</p>
       </Modal>
