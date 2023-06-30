@@ -41,3 +41,22 @@
 .inserir {
   font-size: 25px;
 }
+
+@media only screen and (max-width: 375px) {
+  #form_container {
+    width: 90%;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .placeholder {
+    width: 100% !important;
+  }
+}
+
+@media only screen and (min-width: 530px) and (max-width: 550px) {
+  #form_container {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+}
