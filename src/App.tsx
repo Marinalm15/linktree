@@ -3,6 +3,7 @@ import { Router } from "./Router.tsx";
 import { ClerkProvider } from "@clerk/clerk-react";
 import { ptBR } from "@clerk/localizations";
 import "./style.css";
+import { ArticleContextProvider } from "./context/ArticleContext.tsx";
 
 const publishableKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
@@ -31,9 +32,11 @@ export function App() {
         },
       }}
     >
-      <BrowserRouter>
-        <Router />
-      </BrowserRouter>
+      <ArticleContextProvider>
+        <BrowserRouter>
+          <Router />
+        </BrowserRouter>
+      </ArticleContextProvider>
     </ClerkProvider>
   );
 }
