@@ -1,5 +1,5 @@
 import { createContext, ReactNode, useCallback, useState } from "react";
-import { Article, CreateArticle } from "../model/Article";
+import { Article } from "../model/Article";
 import { api } from "../api/axios";
 import { AxiosResponse } from "axios";
 
@@ -7,10 +7,10 @@ interface ArticleContextType {
   articles: Article[];
   listArticles: () => Promise<AxiosResponse<Article[]>>;
   setArticles: React.Dispatch<React.SetStateAction<Article[]>>;
-  createArticle: (data: CreateArticle) => Promise<AxiosResponse<Article[]>>;
-  deleteArticle: (data: Article) => Promise<AxiosResponse<Article[]>>;
-  updateArticle: (data: Article) => Promise<AxiosResponse<Article[]>>;
-  listArticlesById: () => Promise<AxiosResponse<Article[]>>;
+  createArticle: (data: Article) => Promise<AxiosResponse<Article>>;
+  deleteArticle: (id: string) => Promise<AxiosResponse<Article[]>>;
+  updateArticle: (id: string, data: Article) => Promise<AxiosResponse>;
+  listArticlesById: (id: string) => Promise<AxiosResponse<Article>>;
 }
 
 interface ArticleContextProviderProps {
@@ -30,20 +30,20 @@ export function ArticleContextProvider({
     return await api.get("/article");
   }, []);
 
-  const createArticle = useCallback(async (data: CreateArticle) => {
+  const createArticle = useCallback(async (data: Article) => {
     return await api.post("/article", data);
   }, []);
 
-  const deleteArticle = useCallback(async (data: Article) => {
-    return await api.delete("/article/articleId", data);
+  const deleteArticle = useCallback(async (id: string) => {
+    return await api.delete(`/article/${id}`);
   }, []);
 
-  const updateArticle = useCallback(async (data: Article) => {
-    return await api.patch("/article/:articleId", data);
+  const updateArticle = useCallback(async (id: string, data: Article) => {
+    return await api.patch(`/article/${id}`, data);
   }, []);
 
-  const listArticlesById = useCallback(async () => {
-    return await api.get("/article/:articleId");
+  const listArticlesById = useCallback(async (id: string) => {
+    return await api.get(`/article/${id}`);
   }, []);
 
   return (

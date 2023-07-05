@@ -1,39 +1,73 @@
 import "./style.css";
 import { Table } from "antd";
-import { links } from "../../helpers/Links";
 import { Trash, Pencil, Warning } from "@phosphor-icons/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Modal } from "antd";
+import { useArticle } from "../../hooks/useArticle";
+import { Notify } from "notiflix";
+import useNotiflix from "../../hooks/useNotiflix";
 
 export default function ArticleTable() {
+  const [selectedId, setSelectedId] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { notify } = useNotiflix();
+  const { deleteArticle } = useArticle();
   const { Column } = Table;
+  const { listArticles, articles, setArticles } = useArticle();
 
-  const dataSource = links?.map((link) => {
-    return {
-      id: link.id,
-      titulo: link.name,
-      url: link.url,
-      data: link.data,
+  useEffect(() => {
+    let ignore = false;
+    setArticles([]);
+
+    listArticles().then((response) => {
+      if (!ignore) {
+        setArticles(response.data);
+      }
+    });
+
+    return () => {
+      ignore = true;
     };
-  });
+  }, []);
 
-  function handleEditArticle(id: number) {
-    window.open(`artigo/${id}`);
+  function handleNavigateToEditArticle(_id: string) {
+    window.open(`artigo/${_id}`);
   }
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const handleDeleteArticle = () => {
+    setIsModalOpen(false);
 
-  const showModal = () => {
+    return deleteArticle(selectedId)
+      .then((response) => {
+        if (response.status === 200) {
+          setArticles(response.data);
+          return Notify.success("O artigo foi excluído", notify);
+        }
+      })
+      .catch((error) => {
+        error.response.status;
+      });
+  };
+
+  function handleCancel() {
+    setIsModalOpen(false);
+  }
+
+  function showModal() {
     setIsModalOpen(true);
-  };
+  }
 
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
+  const dataSource = articles?.map((article) => {
+    return {
+      key: article._id,
+      id: article._id,
+      titulo: article.name,
+      url: article.url,
+      data: new Intl.DateTimeFormat("pt-BR", { timeZone: "UTC" }).format(
+        new Date(article.createdAt)
+      ),
+    };
+  });
 
   return (
     <>
@@ -50,6 +84,7 @@ export default function ArticleTable() {
         >
           LinkTree
         </button>
+
         <Table
           id="article_table"
           className="table_article"
@@ -99,14 +134,20 @@ export default function ArticleTable() {
               return (
                 <div className="actions">
                   <div>
-                    <button className="trash" onClick={showModal}>
+                    <button
+                      className="trash"
+                      onClick={() => {
+                        setSelectedId(links.id);
+                        showModal();
+                      }}
+                    >
                       <Trash className="trash_icon" size={20} />
                     </button>
                   </div>
                   <div>
                     <button
                       className="pencil"
-                      onClick={() => handleEditArticle(links.id)}
+                      onClick={() => handleNavigateToEditArticle(links.id)}
                     >
                       <Pencil size={20} />
                     </button>
@@ -126,7 +167,7 @@ export default function ArticleTable() {
           </div>
         }
         open={isModalOpen}
-        onOk={handleOk}
+        onOk={() => handleDeleteArticle()}
         onCancel={handleCancel}
       >
         <p>Deseja realmente apagar este artigo?</p>
