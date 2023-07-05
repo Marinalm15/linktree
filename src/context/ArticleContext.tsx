@@ -1,7 +1,8 @@
 import { createContext, ReactNode, useCallback, useState } from "react";
 import { Article } from "../model/Article";
-import { api } from "../api/axios";
+import { api, apiPrivate } from "../api/axios";
 import { AxiosResponse } from "axios";
+import { useApiPrivate } from "../hooks/useApiPrivate";
 
 interface ArticleContextType {
   articles: Article[];
@@ -26,24 +27,26 @@ export function ArticleContextProvider({
 }: ArticleContextProviderProps) {
   const [articles, setArticles] = useState<Article[]>([]);
 
+  const apiPrivate = useApiPrivate();
+
   const listArticles = useCallback(async () => {
     return await api.get("/article");
   }, []);
 
   const createArticle = useCallback(async (data: Article) => {
-    return await api.post("/article", data);
+    return await apiPrivate.post("/article", data);
   }, []);
 
   const deleteArticle = useCallback(async (id: string) => {
-    return await api.delete(`/article/${id}`);
+    return await apiPrivate.delete(`/article/${id}`);
   }, []);
 
   const updateArticle = useCallback(async (id: string, data: Article) => {
-    return await api.patch(`/article/${id}`, data);
+    return await apiPrivate.patch(`/article/${id}`, data);
   }, []);
 
   const listArticlesById = useCallback(async (id: string) => {
-    return await api.get(`/article/${id}`);
+    return await apiPrivate.get(`/article/${id}`);
   }, []);
 
   return (
