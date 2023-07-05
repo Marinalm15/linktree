@@ -6,15 +6,18 @@ export const Header = () => {
 
   const firstName = [session?.publicUserData.firstName];
   const lastName = [session?.publicUserData.lastName];
+
   return (
     <header>
       <div className="header_blue">
         <div className="header_blue_wrapper">
           <div>
-            <img
-              className="logo_icon"
-              src="../images/Logo_Grupo_InMediam_fundo_alpha.png"
-            />
+            <a href="/">
+              <img
+                className="logo_icon"
+                src="../images/Logo_Grupo_InMediam_fundo_alpha.png"
+              />
+            </a>
           </div>
 
           <div className="wrapper_userButton">

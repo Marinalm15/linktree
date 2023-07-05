@@ -5,7 +5,7 @@ import "./style.css";
 
 export const Article = () => {
   return (
-    <div>
+    <div className="container_new_article">
       <Header />
       <div>
         <Form />

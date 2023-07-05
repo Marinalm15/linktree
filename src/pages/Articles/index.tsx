@@ -5,7 +5,7 @@ import ArticleTable from "../../components/ArticleTable";
 
 export const Articles = () => {
   return (
-    <div>
+    <div className="container_article_page">
       <Header />
       <div>
         <ArticleTable />

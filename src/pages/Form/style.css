@@ -38,6 +38,12 @@
   background-color: rgb(35, 116, 153);
 }
 
+.img_links {
+  font-style: italic;
+  width: 20rem;
+  height: 2rem;
+}
+
 .inserir {
   font-size: 25px;
 }

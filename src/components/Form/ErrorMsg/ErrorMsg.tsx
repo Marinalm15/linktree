@@ -1,5 +1,5 @@
 interface ErrorProps {
-  message: string;
+  message: string | undefined;
 }
 
 export const Error = ({ message }: ErrorProps) => {

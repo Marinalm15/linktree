@@ -101,6 +101,12 @@
   font-weight: bold;
 }
 
+.img_link {
+  height: 50px;
+  width: 50px;
+  margin: 0 500px 0px 20px;
+}
+
 .content_wrapp {
   display: flex;
   justify-content: center;
