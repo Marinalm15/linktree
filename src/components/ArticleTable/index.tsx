@@ -45,7 +45,17 @@ export default function ArticleTable() {
         }
       })
       .catch((error) => {
-        error.response.status;
+        const status = error.response.status;
+        switch (status) {
+          case 404:
+            return Notify.failure(error.response.error, notify);
+
+          default:
+            return Notify.failure(
+              "Ocorreu um erro ao apagar o artigo!",
+              notify
+            );
+        }
       });
   };
 
