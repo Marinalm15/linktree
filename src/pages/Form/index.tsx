@@ -1,5 +1,5 @@
 import "./style.css";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { Input } from "../../components/Form/Input";
@@ -7,7 +7,7 @@ import { Error } from "../../components/Form/ErrorMsg/ErrorMsg";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useArticle } from "../../hooks/useArticle";
-import { Article } from "../../model/Article";
+import { CreateArticle } from "../../model/Article";
 import { Notify } from "notiflix";
 import useNotiflix from "../../hooks/useNotiflix";
 
@@ -16,12 +16,11 @@ export const Form = () => {
   const { notify } = useNotiflix();
   const { createArticle, listArticlesById, updateArticle } = useArticle();
 
-  const schema = yup
-    .object({
-      name: yup.string().required("O campo é obrigatório"),
-      url: yup.string().required("URL inválida"),
-    })
-    .required();
+  const schema = yup.object({
+    name: yup.string().required("O campo é obrigatório"),
+    url: yup.string().required("URL inválida"),
+    image: yup.mixed().optional(),
+  });
 
   const {
     register,
@@ -29,11 +28,25 @@ export const Form = () => {
     setValue,
     formState: { errors },
     reset,
-  } = useForm<Article>({ resolver: yupResolver(schema) });
+    control,
+  } = useForm<CreateArticle>({
+    resolver: yupResolver(schema),
+  });
 
-  const onSubmit = (data: Article) => {
+  const onSubmit = (data: CreateArticle) => {
+    const { name, url, image } = data;
+
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("url", url);
+
+    if (image) {
+      formData.append("image", image);
+      console.log("entrou");
+    }
+
     if (id) {
-      return updateArticle(id, data)
+      return updateArticle(id, formData)
         .then((response) => {
           if (response.status === 204) {
             window.location.replace("/");
@@ -50,14 +63,14 @@ export const Form = () => {
 
             default:
               return Notify.failure(
-                "Ocorreu um erro na criação do artigo!",
+                "Ocorreu um erro na edição do artigo!",
                 notify
               );
           }
         });
     }
 
-    return createArticle(data)
+    return createArticle(formData)
       .then((response) => {
         if (response.status === 201) {
           reset();
@@ -140,7 +153,19 @@ export const Form = () => {
         <div>
           <label>Imagem</label>
           <div>
-            <input name="imagem" type="file" className="img_links" />
+            <Controller
+              control={control}
+              name={"image"}
+              render={({ field }) => (
+                <input
+                  onChange={(e: any) => {
+                    field.onChange(e.target.files[0]);
+                  }}
+                  type="file"
+                  id="picture"
+                />
+              )}
+            />
           </div>
         </div>
         <div>

@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useCallback, useState } from "react";
-import { Article } from "../model/Article";
-import { api, apiPrivate } from "../api/axios";
+import { Article, CreateArticle, UpdateArticle } from "../model/Article";
+import { api } from "../api/axios";
 import { AxiosResponse } from "axios";
 import { useApiPrivate } from "../hooks/useApiPrivate";
 
@@ -8,9 +8,9 @@ interface ArticleContextType {
   articles: Article[];
   listArticles: () => Promise<AxiosResponse<Article[]>>;
   setArticles: React.Dispatch<React.SetStateAction<Article[]>>;
-  createArticle: (data: Article) => Promise<AxiosResponse<Article>>;
+  createArticle: (data: FormData) => Promise<AxiosResponse<Article>>;
   deleteArticle: (id: string) => Promise<AxiosResponse<Article[]>>;
-  updateArticle: (id: string, data: Article) => Promise<AxiosResponse>;
+  updateArticle: (id: string, data: FormData) => Promise<AxiosResponse>;
   listArticlesById: (id: string) => Promise<AxiosResponse<Article>>;
 }
 
@@ -33,16 +33,24 @@ export function ArticleContextProvider({
     return await api.get("/article");
   }, []);
 
-  const createArticle = useCallback(async (data: Article) => {
-    return await apiPrivate.post("/article", data);
+  const createArticle = useCallback(async (data: FormData) => {
+    return await apiPrivate.post("/article", data, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
   }, []);
 
   const deleteArticle = useCallback(async (id: string) => {
     return await apiPrivate.delete(`/article/${id}`);
   }, []);
 
-  const updateArticle = useCallback(async (id: string, data: Article) => {
-    return await apiPrivate.patch(`/article/${id}`, data);
+  const updateArticle = useCallback(async (id: string, data: FormData) => {
+    return await apiPrivate.patch(`/article/${id}`, data, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
   }, []);
 
   const listArticlesById = useCallback(async (id: string) => {

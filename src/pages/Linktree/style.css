@@ -99,12 +99,15 @@
   color: white;
   font-size: 12px;
   font-weight: bold;
+  position: relative;
 }
 
 .img_link {
   height: 50px;
   width: 50px;
-  margin: 0 500px 0px 20px;
+  margin: 0 500px 0px 30px;
+  position: absolute;
+  border-radius: 5px;
 }
 
 .content_wrapp {
