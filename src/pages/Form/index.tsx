@@ -5,7 +5,7 @@ import * as yup from "yup";
 import { Input } from "../../components/Form/Input";
 import { Error } from "../../components/Form/ErrorMsg/ErrorMsg";
 import { useParams } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useArticle } from "../../hooks/useArticle";
 import { CreateArticle } from "../../model/Article";
 import { Notify } from "notiflix";
@@ -36,6 +36,7 @@ export const Form = () => {
   });
 
   const imagesFileList = watch("image");
+  const [imagePath, setImagePath] = useState<string | null>(null);
 
   const onSubmit = (data: CreateArticle) => {
     const { name, url, image } = data;
@@ -54,6 +55,8 @@ export const Form = () => {
         .then((response) => {
           if (response.status === 204) {
             window.location.replace("/");
+            reset();
+            setImagePath(null);
             return Notify.success("Artigo salvo com sucesso", notify);
           }
         })
@@ -109,8 +112,7 @@ export const Form = () => {
             if (response && !ignore) {
               setValue("name", data.name);
               setValue("url", data.url);
-              setValue("image", data.image);
-              console.log(data.image);
+              setImagePath(data.imagePath);
             }
           })
           .catch((error) => {
@@ -157,14 +159,24 @@ export const Form = () => {
           </div>
         </div>
         <div>
-          <InputUpload
-            maxCount={1}
-            multiple={false}
-            control={control}
-            imagesList={imagesFileList}
-            name="image"
-            placeholder="Anexe a foto do artigo"
-          />
+          <div>
+            {imagePath && (
+              <img
+                className="img_link_edit"
+                src={`http://localhost:3001/uploads/${imagePath}`}
+              />
+            )}
+          </div>
+          <div>
+            <InputUpload
+              maxCount={1}
+              multiple={false}
+              control={control}
+              imagesList={imagesFileList}
+              name="image"
+              placeholder="Anexar imagem"
+            />
+          </div>
         </div>
         <div>
           <button className="form_button" type="submit" name="enviar">

@@ -7,14 +7,14 @@
 }
 
 #form_container {
-  width: 25rem;
+  width: 26rem;
   height: 33rem;
   border-radius: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 3rem;
+  gap: 2rem;
   background-color: #cbdf24;
   color: #124e6a;
   font-weight: bold;
@@ -56,6 +56,14 @@
 
 .upload_button:hover {
   background-color: rgb(35, 116, 153);
+}
+
+.img_link_edit {
+  height: 50px;
+  width: 50px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @media only screen and (max-width: 375px) {
