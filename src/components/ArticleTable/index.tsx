@@ -6,7 +6,7 @@ import { Modal } from "antd";
 import { useArticle } from "../../hooks/useArticle";
 import { Notify } from "notiflix";
 import useNotiflix from "../../hooks/useNotiflix";
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function ArticleTable() {
   const [selectedId, setSelectedId] = useState("");
@@ -15,6 +15,7 @@ export default function ArticleTable() {
   const { deleteArticle } = useArticle();
   const { Column } = Table;
   const { listArticles, articles, setArticles } = useArticle();
+  const navigate = useNavigate();
 
   useEffect(() => {
     let ignore = false;
@@ -32,7 +33,7 @@ export default function ArticleTable() {
   }, []);
 
   function handleNavigateToEditArticle(_id: string) {
-    window.open(`artigo/${_id}`);
+    navigate(`/artigo/${_id}`);
   }
 
   const handleDeleteArticle = () => {
