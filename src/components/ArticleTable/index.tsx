@@ -6,6 +6,7 @@ import { Modal } from "antd";
 import { useArticle } from "../../hooks/useArticle";
 import { Notify } from "notiflix";
 import useNotiflix from "../../hooks/useNotiflix";
+import { NavLink } from "react-router-dom";
 
 export default function ArticleTable() {
   const [selectedId, setSelectedId] = useState("");
@@ -82,19 +83,6 @@ export default function ArticleTable() {
   return (
     <>
       <div className="table_container">
-        <button
-          className="button_new_article"
-          onClick={() => window.open("artigo")}
-        >
-          Novo Artigo
-        </button>
-        <button
-          className="button_linktree"
-          onClick={() => window.open("linktree")}
-        >
-          LinkTree
-        </button>
-
         <Table
           id="article_table"
           className="table_article"
