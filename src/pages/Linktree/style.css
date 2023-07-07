@@ -150,18 +150,16 @@ a {
 }
 
 .logIn_button {
-  background: #cbdf24;
   cursor: pointer;
   transition: background 0.3s;
   border: none;
   border-radius: 5px;
-  padding: 10px 50px;
   color: #fff;
   font-weight: bold;
 }
 
 .logIn_button:hover {
-  background-color: rgb(238, 255, 85);
+  color: rgb(238, 255, 85);
 }
 
 .footer-green {
