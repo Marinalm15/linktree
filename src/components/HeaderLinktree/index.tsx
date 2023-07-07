@@ -1,4 +1,5 @@
 import { UserButton, useSession } from "@clerk/clerk-react";
+import { NavLink } from "react-router-dom";
 
 export const HeaderLinktree = () => {
   const { isSignedIn } = useSession();
@@ -15,12 +16,12 @@ export const HeaderLinktree = () => {
           <button className="logIn_button" onClick={() => window.open("/")}>
             LogIn{" "}
           </button>
-        )}
+        )}*/}
         {isSignedIn && (
-          <button className="logIn_button" onClick={() => window.open("/")}>
-            Artigos
-          </button>
-        )} */}
+          <NavLink className="logIn_button" to="/">
+            Início
+          </NavLink>
+        )}
         <img id="logo" src="images/Logo_Grupo_InMediam_fundo_alpha.png" />
       </div>
     </header>
