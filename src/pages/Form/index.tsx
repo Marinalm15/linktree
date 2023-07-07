@@ -10,7 +10,7 @@ import { useArticle } from "../../hooks/useArticle";
 import { CreateArticle } from "../../model/Article";
 import { Notify } from "notiflix";
 import useNotiflix from "../../hooks/useNotiflix";
-import { InputUpload } from "../../components/InputUpload";
+import { InputUpload } from "../../components/Form/InputUpload";
 
 export const Form = () => {
   const { id } = useParams();
