@@ -8,7 +8,7 @@
 
 #form_container {
   width: 25rem;
-  height: 30rem;
+  height: 33rem;
   border-radius: 15px;
   display: flex;
   flex-direction: column;
@@ -46,6 +46,16 @@
 
 .inserir {
   font-size: 25px;
+}
+
+.upload_button {
+  background-color: #124e6a;
+  color: #fff;
+  border: none;
+}
+
+.upload_button:hover {
+  background-color: rgb(35, 116, 153);
 }
 
 @media only screen and (max-width: 375px) {

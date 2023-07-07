@@ -1,5 +1,5 @@
 import "./style.css";
-import { Controller, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { Input } from "../../components/Form/Input";
@@ -10,6 +10,7 @@ import { useArticle } from "../../hooks/useArticle";
 import { CreateArticle } from "../../model/Article";
 import { Notify } from "notiflix";
 import useNotiflix from "../../hooks/useNotiflix";
+import { InputUpload } from "../../components/InputUpload";
 
 export const Form = () => {
   const { id } = useParams();
@@ -29,9 +30,12 @@ export const Form = () => {
     formState: { errors },
     reset,
     control,
+    watch,
   } = useForm<CreateArticle>({
     resolver: yupResolver(schema),
   });
+
+  const imagesFileList = watch("image");
 
   const onSubmit = (data: CreateArticle) => {
     const { name, url, image } = data;
@@ -41,7 +45,7 @@ export const Form = () => {
     formData.append("url", url);
 
     if (image) {
-      formData.append("image", image);
+      formData.append("image", image[0].originFileObj);
       console.log("entrou");
     }
 
@@ -105,6 +109,8 @@ export const Form = () => {
             if (response && !ignore) {
               setValue("name", data.name);
               setValue("url", data.url);
+              setValue("image", data.image);
+              console.log(data.image);
             }
           })
           .catch((error) => {
@@ -151,22 +157,14 @@ export const Form = () => {
           </div>
         </div>
         <div>
-          <label>Imagem</label>
-          <div>
-            <Controller
-              control={control}
-              name={"image"}
-              render={({ field }) => (
-                <input
-                  onChange={(e: any) => {
-                    field.onChange(e.target.files[0]);
-                  }}
-                  type="file"
-                  id="picture"
-                />
-              )}
-            />
-          </div>
+          <InputUpload
+            maxCount={1}
+            multiple={false}
+            control={control}
+            imagesList={imagesFileList}
+            name="image"
+            placeholder="Anexe a foto do artigo"
+          />
         </div>
         <div>
           <button className="form_button" type="submit" name="enviar">

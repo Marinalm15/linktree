@@ -9,7 +9,11 @@ export interface Article {
 export interface CreateArticle {
   name: string;
   url: string;
-  image?: File;
+  image?: [
+    {
+      originFileObj: File;
+    }
+  ];
 }
 
 export interface UpdateArticle extends CreateArticle {}
