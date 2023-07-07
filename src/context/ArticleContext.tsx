@@ -1,5 +1,5 @@
 import { createContext, ReactNode, useCallback, useState } from "react";
-import { Article, CreateArticle, UpdateArticle } from "../model/Article";
+import { Article } from "../model/Article";
 import { api } from "../api/axios";
 import { AxiosResponse } from "axios";
 import { useApiPrivate } from "../hooks/useApiPrivate";

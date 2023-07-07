@@ -2,7 +2,7 @@ export interface Article {
   _id: string;
   name: string;
   url: string;
-  imagePath?: string;
+  imagePath: string | null;
   createdAt: Date;
 }
 
