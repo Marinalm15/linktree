@@ -39,7 +39,7 @@ export const Header = () => {
               {!isArticlePage && (
                 <div className="nav_link_wrapper">
                   <NavLink className="nav_link" to="/artigo">
-                    Novo Artigo
+                    Criar Artigo
                   </NavLink>
                 </div>
               )}

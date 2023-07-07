@@ -43,12 +43,8 @@
 
 .nav_links_container .nav_link_wrapper {
   margin-right: 2rem;
-}
-
-.nav_link_wrapper {
   border-bottom: 1px solid #fff;
   animation-duration: 3s;
-  animation-name: slidein;
 }
 
 .nav_link_wrapper:hover {
@@ -60,13 +56,12 @@
   color: #fff;
   font-weight: 400;
   animation-duration: 3s;
-  animation-name: slidein;
 }
 
 @keyframes slidein {
   from {
-    margin-left: 100%;
-    width: 300%;
+    margin-left: 10%;
+    width: 100%;
   }
 
   to {
