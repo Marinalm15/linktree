@@ -45,6 +45,7 @@
   margin-right: 2rem;
   border-bottom: 1px solid #fff;
   animation-duration: 3s;
+  animation: 10s anim-flipX ease;
 }
 
 .nav_link_wrapper:hover {
@@ -56,17 +57,22 @@
   color: #fff;
   font-weight: 400;
   animation-duration: 3s;
+  animation: 10s anim-flipX ease;
 }
 
-@keyframes slidein {
-  from {
-    margin-left: 10%;
-    width: 100%;
+@keyframes anim-flipX {
+  0% {
+    opacity: 0;
+    transform: rotateX(90def);
   }
-
-  to {
-    margin-left: 0%;
-    width: 100%;
+  50% {
+    opacity: 1;
+    transform: rotateX(720deg);
+  }
+  100% {
+    /* animate nothing to pause animation at the end */
+    opacity: 1;
+    transform: rotateX(720deg);
   }
 }
 
