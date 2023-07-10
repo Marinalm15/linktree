@@ -45,7 +45,7 @@
   margin-right: 2rem;
   border-bottom: 1px solid #fff;
   animation-duration: 3s;
-  animation: 10s anim-flipX ease;
+  animation: 5s anim-flipX ease;
 }
 
 .nav_link_wrapper:hover {
@@ -57,7 +57,7 @@
   color: #fff;
   font-weight: 400;
   animation-duration: 3s;
-  animation: 10s anim-flipX ease;
+  animation: 5s anim-flipX ease;
 }
 
 @keyframes anim-flipX {
@@ -70,7 +70,6 @@
     transform: rotateX(720deg);
   }
   100% {
-    /* animate nothing to pause animation at the end */
     opacity: 1;
     transform: rotateX(720deg);
   }
